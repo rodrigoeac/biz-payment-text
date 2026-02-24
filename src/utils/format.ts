@@ -25,14 +25,14 @@ export function buildSinalText(total: number, rate: number): string {
   const sinalBRL = sinal * rate
 
   return [
-    `• Total reserva: ${formatUSD(total)}`,
+    `• Total reserva: ${formatUSD(total)} USD`,
     ``,
-    `• Sinal 20%: ${formatUSD(sinal)} / ${formatBRL(sinalBRL)}`,
+    `• Sinal 20%: ${formatUSD(sinal)} USD / ${formatBRL(sinalBRL)} BRL`,
     ``,
-    `• Saldo na entrega do carro: ${formatUSD(saldo)}`,
+    `• Saldo na entrega do carro: ${formatUSD(saldo)} USD`,
     ``,
     `PIX: contact@bizrentcar.com`,
-    `Favorecido: OMEUAPE`,
+    `Favorecido: OMEUAPE (nossa empresa no Brasil)`,
   ].join('\n')
 }
 
@@ -43,13 +43,13 @@ export function buildSaldoText(total: number, rate: number): string {
   const saldoBRL = saldo * rate
 
   return [
-    `• Total reserva: ${formatUSD(total)}`,
+    `• Total reserva: ${formatUSD(total)} USD`,
     ``,
-    `• Sinal 20% ✅ ${formatUSD(sinal)}`,
+    `• Sinal 20%: ${formatUSD(sinal)} USD ✅`,
     ``,
-    `• Saldo na entrega do carro: ${formatUSD(saldo)} / ${formatBRL(saldoBRL)}`,
+    `• Saldo na entrega do carro: ${formatUSD(saldo)} USD / ${formatBRL(saldoBRL)} BRL`,
     ``,
     `PIX: contact@bizrentcar.com`,
-    `Favorecido: OMEUAPE`,
+    `Favorecido: OMEUAPE (nossa empresa no Brasil)`,
   ].join('\n')
 }
