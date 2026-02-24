@@ -49,7 +49,7 @@ export function buildTotalText(total: number, rate: number): string {
     ``,
     `• Sinal 20%: ${formatUSD(sinal)} USD / ${formatBRL(sinalBRL)} BRL`,
     ``,
-    `• Saldo na entrega do carro: ${formatUSD(saldo)} USD / ${formatBRL(saldoBRL)} BRL`,
+    `• Saldo na entrega do carro: ${formatUSD(saldo)} USD`,
     ``,
     `PIX: contact@bizrentcar.com`,
     `Favorecido: OMEUAPE (nossa empresa no Brasil)`,

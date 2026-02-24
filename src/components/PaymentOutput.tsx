@@ -108,7 +108,7 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
           <BreakdownRow
             label="Saldo 80%"
             usd={formatUSD(saldo!)}
-            brl={mode === 'saldo' || mode === 'total' ? formatBRL(saldoBRL!) : undefined}
+            brl={mode === 'saldo' ? formatBRL(saldoBRL!) : undefined}
           />
         </div>
       )}
