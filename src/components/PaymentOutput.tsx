@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { buildSinalText, buildSaldoText, formatUSD, formatBRL } from '../utils/format'
+import { buildSinalText, buildSaldoText, buildTotalText, formatUSD, formatBRL } from '../utils/format'
 import { CopyButton } from './CopyButton'
 
 interface PaymentOutputProps {
@@ -7,7 +7,7 @@ interface PaymentOutputProps {
   rate: number | null
 }
 
-type Mode = 'sinal' | 'saldo'
+type Mode = 'sinal' | 'total' | 'saldo'
 
 export function PaymentOutput({ total, rate }: PaymentOutputProps) {
   const [mode, setMode] = useState<Mode>('sinal')
@@ -17,11 +17,14 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
   const outputText = isReady
     ? mode === 'sinal'
       ? buildSinalText(total, rate)
-      : buildSaldoText(total, rate)
+      : mode === 'total'
+        ? buildTotalText(total, rate)
+        : buildSaldoText(total, rate)
     : ''
 
   const sinal = isReady ? total * 0.2 : null
   const saldo = isReady ? total * 0.8 : null
+  const totalBRL = isReady && rate ? total * rate : null
   const sinalBRL = isReady && rate ? (total * 0.2) * rate : null
   const saldoBRL = isReady && rate ? (total * 0.8) * rate : null
 
@@ -39,8 +42,8 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {/* Mode selector */}
-      <div style={{ display: 'flex', gap: 10 }}>
+      {/* Mode selector — row 1: Sinal + Total BRL */}
+      <div style={{ display: 'flex', gap: 8 }}>
         <button
           onClick={() => setMode('sinal')}
           style={{
@@ -52,6 +55,20 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
         >
           Sinal (20%)
         </button>
+        <button
+          onClick={() => setMode('total')}
+          style={{
+            ...btnBase,
+            background: mode === 'total' ? '#C8A96E' : 'transparent',
+            borderColor: '#C8A96E',
+            color: mode === 'total' ? '#fff' : '#C8A96E',
+          }}
+        >
+          Total BRL
+        </button>
+      </div>
+      {/* Row 2: Saldo */}
+      <div style={{ display: 'flex' }}>
         <button
           onClick={() => setMode('saldo')}
           style={{
@@ -79,18 +96,19 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
           <BreakdownRow
             label="Total reserva"
             usd={formatUSD(total!)}
+            brl={mode === 'total' ? formatBRL(totalBRL!) : undefined}
           />
           <div style={{ borderTop: '1px solid #E2E8F2', margin: '2px 0' }} />
           <BreakdownRow
             label="Sinal 20%"
             usd={formatUSD(sinal!)}
-            brl={mode === 'sinal' ? formatBRL(sinalBRL!) : undefined}
+            brl={mode === 'sinal' || mode === 'total' ? formatBRL(sinalBRL!) : undefined}
             checked={mode === 'saldo'}
           />
           <BreakdownRow
             label="Saldo 80%"
             usd={formatUSD(saldo!)}
-            brl={mode === 'saldo' ? formatBRL(saldoBRL!) : undefined}
+            brl={mode === 'saldo' || mode === 'total' ? formatBRL(saldoBRL!) : undefined}
           />
         </div>
       )}

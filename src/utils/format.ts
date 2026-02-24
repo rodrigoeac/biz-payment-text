@@ -36,6 +36,26 @@ export function buildSinalText(total: number, rate: number): string {
   ].join('\n')
 }
 
+/** Generate "Total BRL" message text — all values in both currencies */
+export function buildTotalText(total: number, rate: number): string {
+  const sinal = total * 0.2
+  const saldo = total * 0.8
+  const totalBRL = total * rate
+  const sinalBRL = sinal * rate
+  const saldoBRL = saldo * rate
+
+  return [
+    `• Total reserva: ${formatUSD(total)} USD / ${formatBRL(totalBRL)} BRL`,
+    ``,
+    `• Sinal 20%: ${formatUSD(sinal)} USD / ${formatBRL(sinalBRL)} BRL`,
+    ``,
+    `• Saldo na entrega do carro: ${formatUSD(saldo)} USD / ${formatBRL(saldoBRL)} BRL`,
+    ``,
+    `PIX: contact@bizrentcar.com`,
+    `Favorecido: OMEUAPE (nossa empresa no Brasil)`,
+  ].join('\n')
+}
+
 /** Generate "Saldo" message text */
 export function buildSaldoText(total: number, rate: number): string {
   const sinal = total * 0.2
