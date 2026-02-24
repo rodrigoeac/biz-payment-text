@@ -14,40 +14,29 @@ export default function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '24px 16px 48px',
+      padding: '12px 16px 16px',
     }}>
-      {/* Header */}
+      {/* Header — compact: logo inline with title */}
       <div style={{
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        gap: 12,
-        marginBottom: 32,
-        marginTop: 16,
+        gap: 10,
+        marginBottom: 12,
       }}>
         <img
           src="/logo.svg"
           alt="BIZ Rent Car"
-          style={{ height: 48, width: 'auto' }}
+          style={{ height: 28, width: 'auto' }}
           onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
         />
-        <div style={{ textAlign: 'center' }}>
-          <h1 style={{
-            fontSize: 22,
-            fontWeight: 700,
-            color: '#1B2D4F',
-            letterSpacing: '-0.02em',
-          }}>
-            Payment Text Generator
-          </h1>
-          <p style={{
-            fontSize: 14,
-            color: '#8FA3C0',
-            marginTop: 4,
-          }}>
-            Gere o texto de pagamento para enviar ao cliente
-          </p>
-        </div>
+        <h1 style={{
+          fontSize: 16,
+          fontWeight: 700,
+          color: '#1B2D4F',
+          letterSpacing: '-0.01em',
+        }}>
+          Payment Text Generator
+        </h1>
       </div>
 
       {/* Main card */}
@@ -57,16 +46,16 @@ export default function App() {
         background: '#fff',
         borderRadius: 16,
         boxShadow: '0 4px 12px rgba(27,45,79,0.08)',
-        padding: 24,
+        padding: '16px 20px',
         display: 'flex',
         flexDirection: 'column',
-        gap: 24,
+        gap: 16,
       }}>
         {/* Rate display */}
         <div style={{
           background: '#F7F9FC',
           borderRadius: 10,
-          padding: '12px 16px',
+          padding: '10px 14px',
         }}>
           <RateDisplay
             rawAsk={rawAsk}
@@ -79,28 +68,14 @@ export default function App() {
           />
         </div>
 
-        {/* Divider */}
         <div style={{ borderTop: '1px solid #EEF2F8' }} />
 
-        {/* Amount input */}
         <AmountInput value={amount} onChange={setAmount} />
 
-        {/* Divider */}
         <div style={{ borderTop: '1px solid #EEF2F8' }} />
 
-        {/* Output */}
         <PaymentOutput total={amount} rate={effectiveRate} />
       </div>
-
-      {/* Footer */}
-      <p style={{
-        marginTop: 32,
-        fontSize: 12,
-        color: '#B0BDD0',
-        textAlign: 'center',
-      }}>
-        BIZ Rent Car · Ferramenta interna · Cotação via AwesomeAPI (UOL) + 4%
-      </p>
     </div>
   )
 }

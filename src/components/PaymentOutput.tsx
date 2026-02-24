@@ -27,7 +27,7 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
 
   const btnBase: React.CSSProperties = {
     flex: 1,
-    padding: '11px 20px',
+    padding: '9px 16px',
     border: '2px solid',
     borderRadius: 10,
     fontSize: 15,
@@ -38,7 +38,7 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       {/* Mode selector */}
       <div style={{ display: 'flex', gap: 10 }}>
         <button
@@ -71,10 +71,10 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
           background: '#F7F9FC',
           border: '1px solid #E2E8F2',
           borderRadius: 10,
-          padding: '14px 16px',
+          padding: '10px 14px',
           display: 'flex',
           flexDirection: 'column',
-          gap: 8,
+          gap: 6,
         }}>
           <BreakdownRow
             label="Total reserva"
@@ -100,8 +100,8 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
         background: '#fff',
         border: '1.5px solid #D8E0EC',
         borderRadius: 10,
-        padding: 16,
-        minHeight: 160,
+        padding: 12,
+        minHeight: 130,
         display: 'flex',
         flexDirection: 'column',
       }}>
@@ -109,7 +109,7 @@ export function PaymentOutput({ total, rate }: PaymentOutputProps) {
           <pre style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 14,
-            lineHeight: 1.7,
+            lineHeight: 1.55,
             color: '#1B2D4F',
             whiteSpace: 'pre-wrap',
             wordBreak: 'break-word',

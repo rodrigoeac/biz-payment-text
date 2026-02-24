@@ -61,7 +61,7 @@ export function AmountInput({ value, onChange }: AmountInputProps) {
             fontWeight: 600,
             color: '#1B2D4F',
             background: 'transparent',
-            padding: '14px 0',
+            padding: '10px 0',
             fontFamily: "'DM Sans', sans-serif",
             minWidth: 0,
           }}
